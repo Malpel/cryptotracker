@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FetchCoinData from './../Actions/FetchCoinData';
 import CoinView from './CoinView';
 
@@ -27,12 +27,19 @@ class CryptoContainer extends Component {
     render() {
         const { crypto } = this.props;
         return (
-            <View>
+            <ScrollView contentContainerStyle={styles.content}>
                 {this.renderCoinView()}
-            </View>
+            </ScrollView>
         )
     }
 }
+
+const styles = StyleSheet.create ({
+    content: {
+        paddingBottom: 100,
+        paddingTop: 55
+    }
+});
 
 function mapStateToProps(state) {
     return {
