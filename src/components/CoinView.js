@@ -9,59 +9,94 @@ const styles = StyleSheet.create({
         padding: 10,
         flex: 1,
         flexDirection: 'row',
-
-    },
-    bold: {
-        fontWeight: 'bold'
+        borderTopWidth: 1,
+        borderColor: '#90EE90',
+      
     },
     image: {
-        width:40,
-        height: 40,
+        width: 37,
+        height: 37,
+        position: 'absolute',
+        left: 5
     },
-    upper: {
-        flex: 1,
+    leftCol: {
+        flex: 1.1,
         flexDirection: 'column',
-        justifyContent: 'flex-start',
-        paddingLeft: 10
-    },
-    lower: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        marginTop: 10
+        paddingLeft: 10,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: '#90EE90',
     },
     rightCol: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'column',
+        paddingLeft: 25,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: '#90EE90',
+
+    },
+    centrist: {
+        flex: 0.75,
+        flexDirection: 'column',
+        textAlign: 'center',
+        marginTop: 7,
+        fontFamily: 'monospace'
+    },
+    leftTexts: {
+        position: 'relative', 
+        left: 40,
+        fontSize: 12,  
+        fontFamily: 'monospace'
+    },
+    rightTexts: {
+        fontSize: 12,  
+        fontFamily: 'monospace'
+    },
+    bolds: {
+        position: 'relative', 
+        left: 40,
+        fontWeight: 'bold',
+        fontFamily: 'monospace'
     }
   });
 
 
-const { container, image, bold, upper, lower, rightCol } = styles;
+const { container,
+    image, 
+    leftCol,
+    rightCol, 
+    centrist,
+    leftTexts,
+    rightTexts,
+    bolds } = styles;
 
 
 const CoinView = (props) => {
     return (
         <View style={container}>
-           <Image style={image} source={{ uri: images[props.symbol]}} />
+        
             
-                
-            <View style={upper}>
-            
-                <Text style={bold}>{props.coin_name} {props.symbol}</Text>
-                <Text style={rightCol}>Coin value: {props.price_usd}$</Text>
-                
+              
+      
+            <View style={leftCol}>
+                <Image style={image} source={{ uri: images[props.symbol]}} />
+                <Text style={bolds}>{props.symbol}</Text>
+                <Text style={leftTexts}>{props.coin_name}</Text>                     
             </View>
-            <View style={lower}>
+           
+            <Text style={centrist}>{props.price_usd}$</Text>
+            
+            <View style={rightCol}>
                 
 
-                <Text>Change 24h: {props.percent_change_24h > 0 && <Text style={{ color: 'green'}}>
+             <Text style={rightTexts}>24h: {props.percent_change_24h > 0 && <Text style={{ color: 'green'}}>
                 +{props.percent_change_24h}%</Text>}
                 
                 {props.percent_change_24h < 0 && <Text style={{ color: 'red'}}>
                 {props.percent_change_24h}%</Text>}</Text>
 
-                <Text style={rightCol}>Change 7d: {props.percent_change_7d > 0 && <Text style={{ color: 'green' }}
+                <Text style={rightTexts}>7d: {props.percent_change_7d > 0 && <Text style={{ color: 'green' }}
                 >+{props.percent_change_7d}%</Text>}
 
                 {props.percent_change_7d < 0 && <Text style={{ color: 'red' }}>

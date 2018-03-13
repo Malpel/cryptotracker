@@ -37,7 +37,7 @@ class CryptoContainer extends Component {
 const styles = StyleSheet.create ({
     content: {
         paddingBottom: 100,
-        paddingTop: 55
+        paddingTop: 55,
     }
 });
 
