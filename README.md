@@ -1,4 +1,4 @@
-#Cryptotracker
+# Cryptotracker
 
 Yksinkertainen sovellus kryptovaluuttojen hinnan seuraamiseen.
 
